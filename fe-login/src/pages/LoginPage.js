@@ -13,7 +13,7 @@ const LoginPage = () => {
   const [error, setError]=useState('');
   const navigate = useNavigate();
   
-  const handleSubmit= async(e)=>{
+  const handleLogin= async(e)=>{
     e.preventDefault();
     try{
       if(email == "" && password == ""){
@@ -26,7 +26,7 @@ const LoginPage = () => {
       const response = await api.post('/user/login',{ email,password })
       console.log("loginrr", response)
       if(response.status == 200){
-        navigate('/tasks');
+        navigate('/');
        }else{
          throw new Error(response.error);
        }
@@ -37,7 +37,7 @@ const LoginPage = () => {
   return (
     <div className="display-center">
       {error && <div className='red-error'>{error}</div>}
-      <Form className="login-box" onSubmit={handleSubmit}>
+      <Form className="login-box" onSubmit={handleLogin}>
         <h1>로그인</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
