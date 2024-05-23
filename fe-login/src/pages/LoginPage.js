@@ -24,12 +24,11 @@ const LoginPage = () => {
         throw new Error("이메일을 입력해주세요")
       }
       const response = await api.post('/user/login',{ email,password })
-      console.log("loginrr", response)
+
       if(response.status == 200){
         navigate('/');
-       }else{
-         throw new Error(response.error);
-       }
+      }
+      throw new Error(response.message);
     }catch(error){
       setError(error.message);
     }
