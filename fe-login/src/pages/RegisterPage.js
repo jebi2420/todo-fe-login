@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import api from '../utils/api';
@@ -9,6 +10,7 @@ const RegisterPage = () => {
   const [password, setPassword]=useState('');
   const [secPassword, setSecPassword]=useState('');
   const [error, setError]=useState('');
+  const navigate = useNavigate();
 
   const handleSubmit= async(e)=>{
     e.preventDefault();
@@ -18,6 +20,10 @@ const RegisterPage = () => {
       }
        // api 호출
        const response = await api.post('/user',{name,email,password})
+       // 로그인 페이지로 돌아가기
+       if(response.status == 200){
+        navigate('/login');
+       }
     }catch(error){
       setError(error.message);
     }
