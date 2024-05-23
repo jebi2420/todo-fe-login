@@ -7,10 +7,24 @@ const RegisterPage = () => {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
   const [secPassword, setSecPassword]=useState('');
+  const [error, setError]=useState('');
+
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    try{
+      if(password !== secPassword){
+        throw new Error("패스워드가 일치하지 않습니다. 다시 입력해주세요.")
+      }
+       // api 호출
+    }catch(error){
+      setError(error.message);
+    }
+  }
 
   return (
     <div className="display-center">
-      <Form className="login-box">
+      {error && <div className='red-error'>{error}</div>}
+      <Form className="login-box" onSubmit={handleSubmit}>
         <h1>회원가입</h1>
         <Form.Group className="mb-3" controlId="formName">
           <Form.Label>Name</Form.Label>
