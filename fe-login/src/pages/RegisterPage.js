@@ -23,6 +23,8 @@ const RegisterPage = () => {
        // 로그인 페이지로 돌아가기
        if(response.status == 200){
         navigate('/login');
+       }else{
+         throw new Error(response.data.error);
        }
     }catch(error){
       setError(error.message);
