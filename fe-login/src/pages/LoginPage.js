@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import api from '../utils/api';
@@ -10,6 +11,7 @@ const LoginPage = () => {
   const [email, setEmail]=useState('');
   const [password, setPassword]=useState('');
   const [error, setError]=useState('');
+  const navigate = useNavigate();
   
   const handleSubmit= async(e)=>{
     e.preventDefault();
@@ -21,8 +23,13 @@ const LoginPage = () => {
       }else if(email == ""){
         throw new Error("이메일을 입력해주세요")
       }
-      const response = await api.post('/login',{ email,password })
+      const response = await api.post('/user/login',{ email,password })
       console.log("loginrr", response)
+      if(response.status == 200){
+        navigate('/tasks');
+       }else{
+         throw new Error(response.error);
+       }
     }catch(error){
       setError(error.message);
     }
