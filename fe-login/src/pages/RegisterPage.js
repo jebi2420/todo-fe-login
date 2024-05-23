@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import api from '../utils/api';
 
 const RegisterPage = () => {
   const [name, setName]=useState('');
@@ -9,13 +10,14 @@ const RegisterPage = () => {
   const [secPassword, setSecPassword]=useState('');
   const [error, setError]=useState('');
 
-  const handleSubmit=(e)=>{
+  const handleSubmit= async(e)=>{
     e.preventDefault();
     try{
       if(password !== secPassword){
         throw new Error("패스워드가 일치하지 않습니다. 다시 입력해주세요.")
       }
        // api 호출
+       const response = await api.post('/user',{name,email,password})
     }catch(error){
       setError(error.message);
     }
