@@ -22,7 +22,7 @@ const RegisterPage = () => {
        const response = await api.post('/user',{name,email,password})
        // 로그인 페이지로 돌아가기
        if(response.status == 200){
-        navigate('/login');
+        navigate('/');
        }else{
          throw new Error(response.data.error);
        }
