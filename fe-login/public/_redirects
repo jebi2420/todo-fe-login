@@ -1,2 +1,2 @@
-/api/* http://todolist-demo.ap-northeast-2.elasticbeanstalk.com/api/:splat 200
-/login /
+/api/* http://todolist-demo.ap-northeast-2.elasticbeanstalk.com/api/login:splat 200
+
