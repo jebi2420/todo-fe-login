@@ -9,6 +9,13 @@ import PrivateRoute from './route/PrivateRoute';
 
 function App() {
   const [ user, setUser ] = useState(null);
+  const getUser = async () => {
+    try{  
+      const token = sessionStorage.getItem("token");
+      const response = api.get("/user/???")
+    }catch(error){}
+  }
+
   return (
     <Routes>
         <Route
