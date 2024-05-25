@@ -1,17 +1,27 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import { useState } from 'react';
 import LoginPage from "./pages/LoginPage";
 import TodoPage from "./pages/TodoPage";
 import RegisterPage from "./pages/RegisterPage";
+import PrivateRoute from './route/PrivateRoute';
 
 function App() {
+  const [ user, setUser ] = useState(null);
   return (
     <Routes>
-      <Route path="/todo" element={<TodoPage />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute user={user}>
+              <TodoPage />
+            </PrivateRoute>
+          }
+        />
       <Route path="/register" element={<RegisterPage />} />
 
-      <Route path="/" element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
     </Routes>
   );
 }
