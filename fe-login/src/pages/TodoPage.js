@@ -59,7 +59,7 @@ const TodoPage = () => {
   };
   return (
     <Container>
-      <div class="btn-container"><button class="login-btn"><Link to="/">로그인</Link></button></div>
+      <div class="btn-container"><button class="login-btn"><Link to="/login">로그인</Link></button></div>
       <Row className="add-item-row">
         <Col xs={12} sm={10}>
           <input
