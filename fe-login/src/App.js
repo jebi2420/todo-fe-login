@@ -12,7 +12,7 @@ function App() {
   const getUser = async () => {
     try{  
       const token = sessionStorage.getItem("token");
-      const response = api.get("/user/???")
+      // const response = api.get("/user/???")
     }catch(error){}
   }
 
