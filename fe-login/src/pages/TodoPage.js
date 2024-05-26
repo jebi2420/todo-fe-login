@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 
-const TodoPage = () => {
+const TodoPage = ({handleLogout}) => {
   const [todoList, setTodoList] = useState([]);
   const [todoValue, setTodoValue] = useState("");
 
@@ -60,7 +60,7 @@ const TodoPage = () => {
   };
   return (
     <Container>
-      <div className="btn-container"><button className="login-btn"><Link to="/login">로그인</Link></button></div>
+      <div className="btn-container"><button className="login-btn" onClick={handleLogout}>로그아웃</button></div>
       <Row className="add-item-row">
         <Col xs={12} sm={10}>
           <input
