@@ -12,7 +12,6 @@ const TodoPage = ({handleLogout}) => {
 
   const getTasks = async () => {
     const response = await api.get("/tasks");
-    console.log("tasks:", response.data)
     setTodoList(response.data.data);
   };
   useEffect(() => {
