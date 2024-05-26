@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 import PrivateRoute from './route/PrivateRoute';
 import api from './utils/api';
 
+
 function App() {
   const [ user, setUser ] = useState(null);
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ function App() {
     sessionStorage.removeItem("token");
     setUser(null);
     navigate("/login");
+    console.log(user.name,"logged out")
   }
 
   return (
