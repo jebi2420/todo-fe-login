@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row } from "react-bootstrap";
 
 const TodoItem = ({ item, deleteItem, toggleComplete }) => {
+  console.log("item:",item)
   return (
     <Row>
       <Col xs={12}>
